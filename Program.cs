@@ -8,11 +8,12 @@ namespace Project_19_21_22
 {
     class Program
     {
-        public static List<Book> books = new List<Book>();
+        const string filePath = "../../../books.txt";
+        static List<Book> books = new List<Book>();
 
         static void Main(string[] args)
         {
-
+            
         }
 
         public static void SaveBooks()
