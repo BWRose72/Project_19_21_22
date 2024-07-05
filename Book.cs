@@ -18,7 +18,7 @@ namespace Project_19_21_22
             get { return year; }
             private set {
                 if (value > DateTime.Now.Year)
-                    throw new ArgumentException("Не може да запишете година по-късна от сегашната."); //todo: write a msg for time-travellers
+                    throw new ArgumentException("Не може да запишете година по-късна от сегашната.");
                 year = value;
             }
         }
@@ -28,7 +28,7 @@ namespace Project_19_21_22
             private set
             {
                 if (value <= 0)
-                    throw new ArgumentException("Книгата не може да бъде безплатна."); //todo: write a msg for free-givers
+                    throw new ArgumentException("Книгата не може да бъде безплатна.");
                 price = value;
             }
         }
