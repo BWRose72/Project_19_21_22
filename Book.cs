@@ -42,7 +42,7 @@ namespace Project_19_21_22
         public override string ToString()
         {
             string result = "";
-            result += "Идентификатор: " + Isbn + "\nЗаглавие: " + Title + "\nАвтор:" + Author + "\nГодина на излизане: " + Year + "\nЦена: " + Price + "\n";
+            result += "Идентификатор: " + Isbn + "\nЗаглавие: " + Title + "\nАвтор: " + Author + "\nГодина на излизане: " + Year + "\nЦена: " + Price + " лева\n";
             if (Availability)
                 result += "Налична е.";
             else
