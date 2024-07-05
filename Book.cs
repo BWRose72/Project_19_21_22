@@ -18,8 +18,36 @@ namespace Project_19_21_22
 
         public Book(string isbn, string title, string author, int year, double price)
         {
-
+            Isbn = isbn;
+            Title = title;
+            Author = author;
+            Year = year;
+            Price = price;
+            Availability = true;
+            Borrower = "";
         }
 
+        public void BorrowBook(string borrowerName)
+        {
+            Availability = false;
+            Borrower = borrowerName;
+        }
+
+        public void ReturnBook()
+        {
+            Availability = true;
+            Borrower = "";
+        }
+
+        public override string ToString()
+        {
+            string result = "";
+            result += "Идентификатор: " + Isbn + "\nЗаглавие: " + Title + "\nАвтор:" + Author + "\nГодина на излизане: " + Year + "\nЦена: " + Price + "\n";
+            if (Availability)
+                result += "Налична е.";
+            else
+                result += "Не е налична. Взета е от: " + Borrower;
+            return result;
+        }
     }
 }
