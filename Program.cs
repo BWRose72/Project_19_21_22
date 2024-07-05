@@ -9,23 +9,25 @@ namespace Project_19_21_22
 {
     class Program
     {
-        const string filePath = "../../../books.txt";
+        const string filePath = "../../books.txt";
         static List<Book> books = new List<Book>();
 
         static void Main(string[] args)
         {
-
+            books.Add(new Book("#2", "Elven forest", "MMM", 2003, 23));
+            SaveBooks();
+            Console.Read();
         }
 
         //Записва информацията от "books" във файла
         public static void SaveBooks()
         {
-            StreamWriter writer = new StreamWriter(filePath);
+            StreamWriter writer = new StreamWriter(filePath, false, Encoding.Unicode);
             using(writer)
             {
-                foreach ( Book b in books)
+                foreach ( Book currBook in books)
                 {
-                    writer.WriteLine(b.ToString(true));
+                    writer.WriteLine(currBook.ToString(true));
                 }
             }
         }
