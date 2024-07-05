@@ -14,9 +14,7 @@ namespace Project_19_21_22
 
         static void Main(string[] args)
         {
-            books.Add(new Book("#2", "Elven forest", "MMM", 2003, 23));
-            SaveBooks();
-            Console.Read();
+
         }
 
         //Записва информацията от "books" във файла
@@ -42,7 +40,7 @@ namespace Project_19_21_22
                 while ((line = reader.ReadLine()) != null)
                 {
                     string[] props = line.Split('/').ToArray();
-                    books.Add(new Book(props[0], props[1], props[2], int.Parse(props[3]), double.Parse(props[4])));
+                    books.Add(new Book(props[0], props[1], props[2], int.Parse(props[3]), double.Parse(props[4]), bool.Parse(props[5]), props[6]));
                 }
             }
         }
