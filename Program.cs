@@ -14,6 +14,8 @@ namespace Project_19_21_22
 
         static void Main(string[] args)
         {
+            Console.InputEncoding = Encoding.Unicode;
+            Console.OutputEncoding = Encoding.Unicode;
             LoadBooks();
             ShowMenu();
         }
