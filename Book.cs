@@ -60,22 +60,9 @@ namespace Project_19_21_22
             Borrower = "";
         }
 
-        public string ToString(bool fileFormat = false)
+        public override string ToString()
         {
-            string result = "";
-            if (fileFormat)
-            {
-                result = $"{Isbn}/{Title}/{Author}/{Year}/{Price}/{Availability}/{Borrower}";
-            }
-            else
-            {
-                result += "Identifier: " + Isbn + "\nTitle: " + Title + "\nAuthor: " + Author + "\nYear: " + Year + "\nPrice: " + Price + " BGN\n";
-                if (Availability)
-                    result += "Available.";
-                else
-                    result += "Not available.\nBorrowed by: " + Borrower;
-            }
-            return result;
+            return $"{Isbn}/{Title}/{Author}/{Year}/{Price}/{Availability}/{Borrower}";
         }
     }
 }

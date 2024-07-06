@@ -53,7 +53,7 @@ namespace Project_19_21_22
             {
                 foreach (Book currBook in books)
                 {
-                    writer.WriteLine(currBook.ToString(true));
+                    writer.WriteLine(currBook.ToString());
                 }
             }
         }
