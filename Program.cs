@@ -60,7 +60,7 @@ namespace Project_19_21_22
 
         public static void LoadBooks()
         {
-            StreamReader reader = new StreamReader(filePath);
+            StreamReader reader = new StreamReader(filePath, Encoding.Unicode);
             using (reader)
             {
                 string line;
