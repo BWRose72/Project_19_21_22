@@ -14,11 +14,13 @@ namespace Project_19_21_22
         public string Isbn { get; private set; }
         public string Title { get; private set; }
         public string Author { get; private set; }
-        public int Year {
+        public int Year
+        {
             get { return year; }
-            private set {
+            private set
+            {
                 if (value > DateTime.Now.Year)
-                    throw new ArgumentException("Не може да запишете година по-късна от сегашната.");
+                    throw new ArgumentException("Cannot set a year later than the current year.");
                 year = value;
             }
         }
@@ -28,7 +30,7 @@ namespace Project_19_21_22
             private set
             {
                 if (value <= 0)
-                    throw new ArgumentException("Книгата не може да бъде безплатна.");
+                    throw new ArgumentException("The price cannot be zero or negative.");
                 price = value;
             }
         }
@@ -46,30 +48,18 @@ namespace Project_19_21_22
             Borrower = borrower;
         }
 
-        /// <summary>
-        /// Променя статута на книгата от Налична в Неналична и записва името на заемателя.
-        /// </summary>
-        /// <param name="borrowerName">Името на заемателя.</param>
         public void BorrowBook(string borrowerName)
         {
             Availability = false;
             Borrower = borrowerName;
         }
 
-        /// <summary>
-        /// Променя статута на книгата от Неналична в Налична и изтрива името на заемателя.
-        /// </summary>
         public void ReturnBook()
         {
             Availability = true;
             Borrower = "";
         }
 
-        /// <summary>
-        /// Извежда информацията за книгата. София и Преслава, не пишете нищо в скобичките.
-        /// </summary>
-        /// <param name="fileFormat">Ако е "false" всяко свойство ще е на нов ред. </param>
-        /// <returns></returns>
         public string ToString(bool fileFormat = false)
         {
             string result = "";
@@ -79,11 +69,11 @@ namespace Project_19_21_22
             }
             else
             {
-                result += "Идентификатор: " + Isbn + "\nЗаглавие: " + Title + "\nАвтор: " + Author + "\nГодина на излизане: " + Year + "\nЦена: " + Price + " лева\n";
+                result += "Identifier: " + Isbn + "\nTitle: " + Title + "\nAuthor: " + Author + "\nYear: " + Year + "\nPrice: " + Price + " BGN\n";
                 if (Availability)
-                    result += "Налична е.";
+                    result += "Available.";
                 else
-                    result += "Не е налична.\nВзета е от: " + Borrower;
+                    result += "Not available.\nBorrowed by: " + Borrower;
             }
             return result;
         }
