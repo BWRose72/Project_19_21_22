@@ -11,14 +11,16 @@ namespace Project_19_21_22
     {
         const string filePath = "../../books.txt";
         static List<Book> books = new List<Book>();
-
+       
         static void Main(string[] args)
         {
+            
             Console.Title = "Library";
             Console.InputEncoding = Encoding.Unicode;
             Console.OutputEncoding = Encoding.Unicode;
-            LoadBooks();
+            LoadBooks();          
             ShowMenu();
+            
         }
 
         public static void AddBook()
@@ -42,9 +44,10 @@ namespace Project_19_21_22
                 return;
             }
 
-            books.Add(new Book(isbn, title, author, year, price));
+            books.Add(new Book(isbn, title, author, year, (decimal)price));
             SaveBooks();
             Console.WriteLine("Book added successfully.");
+          
         }
 
         public static void SaveBooks()
@@ -68,7 +71,7 @@ namespace Project_19_21_22
                 while ((line = reader.ReadLine()) != null)
                 {
                     string[] props = line.Split('/').ToArray();
-                    books.Add(new Book(props[0], props[1], props[2], int.Parse(props[3]), double.Parse(props[4]), bool.Parse(props[5]), props[6]));
+                    books.Add(new Book(props[0], props[1], props[2], int.Parse(props[3]), decimal.Parse(props[4]), bool.Parse(props[5]), props[6]));
                 }
             }
         }
@@ -95,10 +98,28 @@ namespace Project_19_21_22
                 return;
             }
 
-            books.Add(new Book(isbn, title, author, year, price));
+          if (price <= 0 && year > 2024)
+            {
+                Console.WriteLine("Invalid price and year. Please try again");
+                return;               
+            }
+          else if (year > 2024)
+            {
+                Console.WriteLine("Invalid year. Please try again.");
+                return;
+            }
+            else if (price <= 0)
+            {
+                Console.WriteLine("Invalid price. Please try again.");
+                return;
+            }
+
+          
+            books.Add(new Book(isbn, title, author, year, (decimal)price));
             SaveBooks();
             Console.WriteLine("Book added successfully.");
             Console.WriteLine("-------------------------------");
+          Console.Clear();
         }
 
         public static void BorrowBook()
@@ -116,15 +137,27 @@ namespace Project_19_21_22
                     break;
                 }
             }
+         
 
             if (selectedBook == null)
             {
                 Console.WriteLine("Book not found or not available.");
                 return;
             }
-
+                   
             Console.Write("Enter borrower's name: ");
             string borrower = Console.ReadLine();
+
+            if (borrower.Length < 2)
+            {
+                Console.WriteLine("Error. There is only one entered letter. Please add name.");
+                return;
+            }
+            else
+            {
+                Console.WriteLine();
+                
+            }
 
             selectedBook.BorrowBook(borrower);
 
@@ -132,6 +165,7 @@ namespace Project_19_21_22
 
             Console.WriteLine("Book borrowed successfully.");
             Console.WriteLine("-------------------------------");
+            Console.Clear();
         }
 
         public static void ReturnBook()
@@ -163,6 +197,7 @@ namespace Project_19_21_22
 
             Console.WriteLine("Book returned successfully.");
             Console.WriteLine("-------------------------------");
+            Console.Clear();
         }
 
         public static void ListAvailableBooks()
@@ -178,8 +213,12 @@ namespace Project_19_21_22
                     Console.WriteLine($"Year: {book.Year}");
                     Console.WriteLine($"Price: {book.Price} BGN");
                     Console.WriteLine("-------------------------------");
-                }
+                    
+                } 
+                
             }
+
+            Console.Clear();
         }
 
         public static void ListBorrowedBooks()
@@ -197,9 +236,12 @@ namespace Project_19_21_22
                     Console.WriteLine($"Borrowed by: {book.Borrower}");
                     Console.WriteLine("-------------------------------");
                 }
+               
             }
-        }
+            Console.Clear();
 
+        }
+       
         public static void ShowMenu()
         {
             while (true)
@@ -212,7 +254,7 @@ namespace Project_19_21_22
                 Console.WriteLine("5. List borrowed books");
                 Console.WriteLine("6. Exit");
                 Console.Write("Choose an option: ");
-
+              
                 var choice = Console.ReadLine();
                 switch (choice)
                 {
@@ -237,7 +279,10 @@ namespace Project_19_21_22
                         Console.WriteLine("Invalid option. Please try again.");
                         break;
                 }
+                
+                
             }
+            
         }
     }
 }

@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace Project_19_21_22
 {
-    class Book
+  public  class Book
     {
+       
         private int year;
-        private double price;
+        private decimal price;
 
         public string Isbn { get; private set; }
+        
         public string Title { get; private set; }
         public string Author { get; private set; }
         public int Year
@@ -24,7 +26,7 @@ namespace Project_19_21_22
                 year = value;
             }
         }
-        public double Price
+        public decimal Price
         {
             get { return price; }
             private set
@@ -37,7 +39,7 @@ namespace Project_19_21_22
         public bool Availability { get; private set; }
         public string Borrower { get; private set; }
 
-        public Book(string isbn, string title, string author, int year, double price, bool availability = true, string borrower = "")
+        public Book(string isbn, string title, string author, int year, decimal price, bool availability = true, string borrower = "")
         {
             Isbn = isbn;
             Title = title;
@@ -52,6 +54,7 @@ namespace Project_19_21_22
         {
             Availability = false;
             Borrower = borrowerName;
+     
         }
 
         public void ReturnBook()
