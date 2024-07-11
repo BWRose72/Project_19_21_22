@@ -47,7 +47,7 @@ namespace Project_19_21_22
             books.Add(new Book(isbn, title, author, year, (decimal)price));
             SaveBooks();
             Console.WriteLine("Book added successfully.");
-          
+            Wait();
         }
 
         public static void SaveBooks()
@@ -119,7 +119,7 @@ namespace Project_19_21_22
             SaveBooks();
             Console.WriteLine("Book added successfully.");
             Console.WriteLine("-------------------------------");
-          Console.Clear();
+            Wait();
         }
 
         public static void BorrowBook()
@@ -165,7 +165,7 @@ namespace Project_19_21_22
 
             Console.WriteLine("Book borrowed successfully.");
             Console.WriteLine("-------------------------------");
-            Console.Clear();
+            Wait();
         }
 
         public static void ReturnBook()
@@ -197,7 +197,7 @@ namespace Project_19_21_22
 
             Console.WriteLine("Book returned successfully.");
             Console.WriteLine("-------------------------------");
-            Console.Clear();
+            Wait();
         }
 
         public static void ListAvailableBooks()
@@ -217,8 +217,7 @@ namespace Project_19_21_22
                 } 
                 
             }
-
-            Console.Clear();
+            Wait();
         }
 
         public static void ListBorrowedBooks()
@@ -238,12 +237,12 @@ namespace Project_19_21_22
                 }
                
             }
-            Console.Clear();
-
+            Wait();
         }
        
         public static void ShowMenu()
         {
+            Console.Clear();
             while (true)
             {
                 Console.WriteLine("Menu");
@@ -274,15 +273,21 @@ namespace Project_19_21_22
                         ListBorrowedBooks();
                         break;
                     case "6":
+                        Environment.Exit(0);
                         return;
                     default:
                         Console.WriteLine("Invalid option. Please try again.");
                         break;
                 }
-                
-                
             }
             
+        }
+
+        public static void Wait()
+        {
+            Console.WriteLine("\nPress any key to continue.");
+            Console.ReadLine();
+            ShowMenu();
         }
     }
 }
