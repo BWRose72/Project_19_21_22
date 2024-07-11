@@ -18,36 +18,10 @@ namespace Project_19_21_22
             Console.Title = "Library";
             Console.InputEncoding = Encoding.Unicode;
             Console.OutputEncoding = Encoding.Unicode;
+            Console.WriteLine("Welcome to the library\n");
             LoadBooks();          
             ShowMenu();
             
-        }
-
-        public static void AddBook()
-        {
-            Console.Write("Enter ISBN: ");
-            var isbn = Console.ReadLine();
-            Console.Write("Enter title: ");
-            var title = Console.ReadLine();
-            Console.Write("Enter author: ");
-            var author = Console.ReadLine();
-            Console.Write("Enter year: ");
-            if (!int.TryParse(Console.ReadLine(), out var year))
-            {
-                Console.WriteLine("Invalid year. Please try again.");
-                return;
-            }
-            Console.Write("Enter price: ");
-            if (!double.TryParse(Console.ReadLine(), out var price))
-            {
-                Console.WriteLine("Invalid price. Please try again.");
-                return;
-            }
-
-            books.Add(new Book(isbn, title, author, year, (decimal)price));
-            SaveBooks();
-            Console.WriteLine("Book added successfully.");
-            Wait();
         }
 
         public static void SaveBooks()
@@ -117,7 +91,7 @@ namespace Project_19_21_22
           
             books.Add(new Book(isbn, title, author, year, (decimal)price));
             SaveBooks();
-            Console.WriteLine("Book added successfully.");
+            Console.WriteLine("\nBook added successfully.");
             Console.WriteLine("-------------------------------");
             Wait();
         }
@@ -195,7 +169,7 @@ namespace Project_19_21_22
 
             SaveBooks();
 
-            Console.WriteLine("Book returned successfully.");
+            Console.WriteLine("\nBook returned successfully.");
             Console.WriteLine("-------------------------------");
             Wait();
         }
@@ -217,7 +191,6 @@ namespace Project_19_21_22
                 } 
                 
             }
-            Wait();
         }
 
         public static void ListBorrowedBooks()
@@ -235,16 +208,15 @@ namespace Project_19_21_22
                     Console.WriteLine($"Borrowed by: {book.Borrower}");
                     Console.WriteLine("-------------------------------");
                 }
-               
             }
-            Wait();
         }
        
         public static void ShowMenu()
         {
-            Console.Clear();
             while (true)
             {
+                Console.Clear();
+                Console.WriteLine("Welcome to the library\n");
                 Console.WriteLine("Menu");
                 Console.WriteLine("1. Add a new book");
                 Console.WriteLine("2. Borrow a book");
@@ -268,9 +240,11 @@ namespace Project_19_21_22
                         break;
                     case "4":
                         ListAvailableBooks();
+                        Wait();
                         break;
                     case "5":
                         ListBorrowedBooks();
+                        Wait();
                         break;
                     case "6":
                         Environment.Exit(0);
